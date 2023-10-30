@@ -1,0 +1,58 @@
+-- 1. Tạo một bảng mới có tên “Product” với các trường: “product_id” , “product_name” (varchar), “price” (double) và “quantity” (int).
+CREATE TABLE Product(
+ product_id int,
+ product_name varchar(20),
+ price double,
+ quantity int )
+ SELECT * FROM Product;
+--  2. Thêm 10 sản phẩm vào bảng “Product” với thông tin sản phẩm bất kỳ.
+INSERT INTO Product (product_id,product_name,price,quantity)
+VALUE (1,'Điện thoại' , 10000,1),
+      (2,'Máy Tính' , 10001,2),
+      (3,'Tai Nghe' , 10020,1),
+      (4,'Ipad' , 10003,3),
+      (5,'Sạc Pin' , 14000,6),
+      (6,'Loa' , 10004,2),
+      (7,'Wifi' , 10010,1),
+      (8,'Áo' , 10008,9),
+      (9,'Quần' , 19000,7),
+      (10,'Giường' , 10600,2);
+-- 3. Thêm một trường “description” (varchar) vào bảng “Product” sau khi đã tạo bảng
+ALTER TABLE Product
+ADD  description varchar(20);
+-- 4. Cập nhật giá (price) của sản phẩm có “product_id” là 1 thành 99.
+SET SQL_SAFE_UPDATES = 0;
+UPDATE Product
+SET price = 99
+WHERE product_id = 1;
+-- Tăng giá của sản phẩm có “product_id” là 2 lên 10%.
+SET SQL_SAFE_UPDATES =0;
+UPDATE Product
+SET price = price * 1.10
+WHERE product_id = '2';
+-- Dựa vào bảng Person đã import
+-- 6. Cập nhật tên của người có id là 10 thành “John Doe”.
+SET SQL_SAFE_UPDATES = 0;
+UPDATE Person
+SET fullname = 'John Doe'
+WHERE id = 10;
+-- 7. Đổi quốc gia của người có id là 3 thành “Canada”.
+SET SQL_SAFE_UPDATES = 0;
+UPDATE Person
+SET country = 'Canada'
+WHERE id = 3;
+-- 8. Sửa ngày sinh của người có id là 7 thành “1990-05-15” và quốc gia thành Việt Nam.
+SET SQL_SAFE_UPDATES = 0;
+UPDATE Person
+SET birthday = '1990-05-15'
+WHERE id = 7;
+-- 9. Tăng mức lương của người có id là 40 lên 10%.
+SET SQL_SAFE_UPDATES = 0;
+UPDATE Person
+SET salary = salary * 1.10
+WHERE id = 40;
+-- 10. Giảm lương của những người nào có mức lương trên 6000 xuống 15%
+SET SQL_SAFE_UPDATES = 0;
+UPDATE Person
+SET salary = salary * 0.85
+WHERE salary > 6000;
